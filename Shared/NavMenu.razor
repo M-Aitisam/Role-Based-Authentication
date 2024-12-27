@@ -1,0 +1,35 @@
+﻿@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<AuthorizeView>
+    <Authorized>
+        <div>
+            @if (isSupervisor)
+            {
+                <NavLink href="/supervisor-tasks" class="nav-link">Supervisor Tasks</NavLink>
+            }
+            else if (isStudent)
+            {
+                <NavLink href="/student-tasks" class="nav-link">Student Tasks</NavLink>
+            }
+        </div>
+    </Authorized>
+    <NotAuthorized>
+        <NavLink href="/login" class="nav-link">Login</NavLink>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+    private bool isSupervisor;
+    private bool isStudent;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Retrieve the authentication state
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        // Check roles
+        isSupervisor = user.IsInRole("Supervisor");
+        isStudent = user.IsInRole("Student");
+    }
+}

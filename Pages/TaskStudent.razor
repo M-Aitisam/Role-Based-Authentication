@@ -1,0 +1,14 @@
+﻿@page "/student-tasks"
+@attribute [Authorize(Policy = "StudentPolicy")]
+
+<h3>Student Tasks</h3>
+<ul>
+    @foreach (var task in StudentTasks)
+    {
+        <li>@task</li>
+    }
+</ul>
+
+@code {
+    private List<string> StudentTasks = new() { "Complete Homework", "Submit Assignments", "Attend Classes" };
+}

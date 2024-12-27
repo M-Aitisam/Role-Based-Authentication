@@ -1,0 +1,14 @@
+﻿@page "/supervisor-tasks"
+@attribute [Authorize(Policy = "SupervisorPolicy")]
+
+<h3>Supervisor Tasks</h3>
+<ul>
+    @foreach (var task in SupervisorTasks)
+    {
+        <li>@task</li>
+    }
+</ul>
+
+@code {
+    private List<string> SupervisorTasks = new() { "Review Reports", "Assign Tasks", "Team Meeting" };
+}
