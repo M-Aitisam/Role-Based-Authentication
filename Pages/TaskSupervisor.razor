@@ -10,13 +10,16 @@
 </ul>
 @* update the code add the content *@
 @code {
-    private List<stri
-    
-    asf]sa[fsl., sa
-        f\fps\l
-        \g\o\s\
-        gj
-        \][ng> SupervisorTasks = new() { "Review Reports", "Assign Tasks", "Team Meeting" };
-    sapofsaklf
-}
+    // First conflicting block
+    private List<string> SupervisorTasks = new() { "Review Reports", "Assign Tasks", "Team Meeting" };
 
+    // Second conflicting block
+    private List<string> SupervisorTasks = new() { "Check Emails", "Plan Schedule" };
+
+    // Additional errors for fun
+    private void UpdateTasks()
+    {
+        SupervisrTasks.Add("Budget Analysis"); // Typo in variable name
+        Superv Tasks.Add("Annual Review");    // Spaces in variable name
+    }
+}
